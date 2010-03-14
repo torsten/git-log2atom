@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-# Written by Torsten Becker <torsten.becker@gmail.com> in 2010
-
+# MIT license, copyright (c) 2010 Torsten Becker <torsten.becker@gmail.com>.
 
 %w*rubygems date time builder*.map{|_|require _}
+
 
 def make_atom_from_git_commits input_string
   project = ($*[0] or 'UnknownProject')

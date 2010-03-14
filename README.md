@@ -25,3 +25,9 @@ git log --stat -n 30 | \
   ruby /var/git/scripts/git-log2atom.rb "$PROJECT_NAME" > \
   $PUB_DIR/$PROJECT_NAME.atom
 </pre>
+
+
+## License
+
+[MIT license](http://www.opensource.org/licenses/mit-license.php),
+copyright &copy; 2010 Torsten Becker <torsten.becker@gmail.com>.
