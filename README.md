@@ -5,14 +5,15 @@ git-log2atom transforms (some variants of) the output of
 into an [Atom feed](http://www.atomenabled.org/).
 
 This might be useful when you want to create a news feed of the commits of
-your git repository.  The script is easily installable as git-hook.
+your Git repository.  The script is easily installable as Git hook.
 
 Requires rubygems, the builder gem and is tested with ruby 1.8.6 and 1.8.7.
 
 
 ## Installation
 
-In your git repository, create <code>.git/hooks/post-receive</code> and make
+In your Git repository, create <code>.git/hooks/post-receive</code>
+([more on hooks](http://book.git-scm.com/5_git_hooks.html)) and make
 sure it is executable, it could look something like that (adjust paths):
 
 <pre>
