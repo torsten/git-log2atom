@@ -1,17 +1,18 @@
 # git-log2atom
 
-git-log2atom.rb transforms the output of git-log(1) into an atom feed.  This might
-be useful when you want to created a news-feed of the commits of your git
-repository.
+git-log2atom transforms (some variants of the) the output of git-log(1)
+into an [Atom feed](http://www.atomenabled.org/).
 
-Requires rubygems, the builder gem and is tested with ruby 1.8.6
+This might be useful when you want to create a news-feed of the commits of
+your git repository.  The script is easily installable as git-hook.
+
+Requires rubygems, the builder gem and is tested with ruby 1.8.6.
 
 
 ## Installation
 
-Git user need write access to PUB_DIR.
-
-Create .git/hooks/post-receive:
+In your git repository, create <code>.git/hooks/post-receive</code> and make
+sure it is executable, it could look something like that (adjust paths):
 
 <pre>
 #!/bin/sh
