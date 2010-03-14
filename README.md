@@ -1,12 +1,13 @@
 # git-log2atom
 
-git-log2atom transforms (some variants of the) the output of git-log(1)
+git-log2atom transforms (some variants of) the output of
+[git-log(1)](http://www.kernel.org/pub/software/scm/git/docs/git-log.html)
 into an [Atom feed](http://www.atomenabled.org/).
 
-This might be useful when you want to create a news-feed of the commits of
+This might be useful when you want to create a news feed of the commits of
 your git repository.  The script is easily installable as git-hook.
 
-Requires rubygems, the builder gem and is tested with ruby 1.8.6.
+Requires rubygems, the builder gem and is tested with ruby 1.8.6 and 1.8.7.
 
 
 ## Installation
