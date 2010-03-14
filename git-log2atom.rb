@@ -4,14 +4,14 @@
 %w*rubygems date time builder*.map{|_|require _}
 
 
-def make_atom_from_git_commits input_string
-  project = ($*[0] or 'UnknownProject')
+def make_atom_from_git_commits input_string, project_name = nil
+  project = (project_name or 'UnknownProject')
   
   atom = Builder::XmlMarkup.new(:indent => 2)
   atom.instruct!
 
   atom.feed :xmlns => 'http://www.w3.org/2005/Atom' do
-    atom.title "Commit Feed#{$*[0] ? " for Project #{project}" : ''}"
+    atom.title "Commit Feed#{project_name ? " for Project #{project}" : ''}"
     atom.id "tag:pixelshed.net,2010-03-14:git-log2atom/p/#{project}"
     atom.updated Time.now.utc.xmlschema
     
@@ -19,7 +19,7 @@ def make_atom_from_git_commits input_string
     input_string.split(/^commit\s+([a-f0-9]+)$/).
     
     # split creates to matches for each commit, the first contains the id
-    # and the second the body, the inject creates for each commit a tuple
+    # and the second the body, the inject creates for each commit a pair
     inject([[]]) do |accu, i|
       next accu  if i.empty?
 
@@ -57,8 +57,8 @@ def make_atom_from_git_commits input_string
     # For each hash create a nice atom post
     each do |entry|
       atom.entry do
-        atom.id("tag:pixelshed.net,2010-03-14:git-log2atom/p/#{project}/c/" +
-            entry[:commit])
+        atom.id("tag:pixelshed.net,2010-03-14:git-log2atom/p/#{project}" + 
+            "/c/#{entry[:commit]}")
         atom.updated Time.parse(entry[:date]).utc.xmlschema  if entry[:date]
         atom.author do
           atom.name entry[:name]
@@ -75,5 +75,9 @@ def make_atom_from_git_commits input_string
 end
 
 if $0 == __FILE__
-  puts make_atom_from_git_commits($stdin.read)
+  if not $*[0].nil? and $*[0] == '-h'
+    puts "Usage: git log | ruby #{$0} [ project_name ]"
+  else
+    puts make_atom_from_git_commits($stdin.read, $*[0])
+  end
 end

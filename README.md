@@ -17,13 +17,13 @@ sure it is executable, it could look something like that (adjust paths):
 <pre>
 #!/bin/sh
 
-PUB_DIR=/var/www/public_dir
+SECRECT_DIR=/var/www/public_dir/a-super-secret-token-to-protect-private-feeds
 PROJECT_NAME=ProjectName
 
 mkdir -p $SECRECT_DIR
 git log --stat -n 30 | \
   ruby /var/git/scripts/git-log2atom.rb "$PROJECT_NAME" > \
-  $PUB_DIR/$PROJECT_NAME.atom
+  $SECRECT_DIR/$PROJECT_NAME.atom
 </pre>
 
 
