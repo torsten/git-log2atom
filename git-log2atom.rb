@@ -1,4 +1,3 @@
-#!/usr/local/bin/ruby
 #!/usr/bin/env ruby
 # Written by Torsten Becker <torsten.becker@gmail.com> in 2010
 
